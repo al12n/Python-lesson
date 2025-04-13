@@ -1,0 +1,29 @@
+<!-- templates/comments.html -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Комментарии</title>
+	</head>
+	<body>
+		<h1>Комментарии</h1>
+
+		<!-- Форма для отправки комментария -->
+		<form action="/add_comment" method="POST">
+			<input type="text" name="username" placeholder="Твоё имя" required />
+			<br />
+			<textarea name="comment" placeholder="Комментарий" required></textarea>
+			<br />
+			<button type="submit">Отправить</button>
+		</form>
+
+		{% if comments %}
+		<ul>
+			{% for comment in comments %}
+			<li><strong>{{ comment[0] }}:</strong> {{ comment[1] }}</li>
+			{% endfor %}
+		</ul>
+		{% else %}
+		<p>Пока комментариев нет.</p>
+		{% endif %}
+	</body>
+</html>
